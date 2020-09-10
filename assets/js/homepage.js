@@ -31,7 +31,6 @@ var getUserRepos = function(user) {
     // console.log("outside")
     // console.log(user)
 };
-
 var formSubmitHandler = function(event) {
     event.preventDefault();
     //  get value from input element
@@ -43,8 +42,7 @@ var formSubmitHandler = function(event) {
         alert("Please enter a GitHub username");
     }
     // console.log(event);
-}
-
+};
 var displayRepos = function(repos, searchTerm) {
     // console.log(repos)
     // console.log(searchTerm);
@@ -60,8 +58,9 @@ var displayRepos = function(repos, searchTerm) {
         // format repo name
         var repoName = repos[i].owner.login + "/" + repos[i].name;
         // create a contianer for each repo
-        var repoEl = document.createElement("div");
+        var repoEl = document.createElement("a");
         repoEl.classList = "list-item flex-row justify-space-between align-center";
+        repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName)
         // create a span element to hold repository name
         var titleEl = document.createElement("span");
         titleEl.textContent = repoName;
@@ -82,7 +81,6 @@ var displayRepos = function(repos, searchTerm) {
         // append container to the dom
         repoContainerEl.appendChild(repoEl);
     }
-}
-
+};
 // getUserRepos()
 userFormEl.addEventListener("submit", formSubmitHandler);
